@@ -1,0 +1,80 @@
+# 1
+SELECT product_name, units_in_stock
+FROM products
+WHERE units_in_stock > 0;
+
+#2
+SELECT product_id, product_name
+FROM products
+WHERE  discontinued = 0
+
+#3
+SELECT product_name, unit_price
+FROM products
+WHERE unit_price = (SELECT MIN(unit_price) FROM products) OR
+unit_price = (SELECT Max(unit_price) FROM products);
+
+#4
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE unit_price < 20;
+
+#5
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE unit_price > 15 AND unit_price < 25;
+
+#6
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE unit_price > (SELECT Avg(unit_price) FROM products);
+
+#7
+SELECT product_id, product_name
+FROM products
+ORDER BY unit_price DESC
+LIMIT 10;
+
+#8
+SELECT product_id, product_name, unit_price
+FROM products
+WHERE discontinued = 1;
+
+#9
+SELECT discontinued, count(*)
+FROM products
+GROUP BY discontinued;
+
+#10
+SELECT product_id, product_name, units_in_stock, units_on_order
+FROM products
+WHERE units_in_stock < units_on_order;
+
+#11
+SELECT customer_id, sum(quantity)
+FROM orders_have_details AS d
+INNER JOIN orders AS o
+ON d.order_id = o.order_id
+GROUP BY customer_id
+ORDER BY sum(quantity) DESC;
+
+SELECT company_name, sum(quantity)
+FROM orders_have_details AS d
+INNER JOIN orders AS o
+ON d.order_id = o.order_id
+  INNER JOIN customers AS c
+  ON o.customer_id = c.customer_id
+GROUP BY company_name
+ORDER BY sum(quantity) DESC;
+
+#12
+SELECT employee_id, customer_id, order_id
+FROM orders
+WHERE employee_id = 1;
+
+#13
+SELECT first_name, last_name, (hire_date - birth_date) / 365 AS hire_age
+FROM employees
+ORDER BY hire_age DESC;
+
+#14
