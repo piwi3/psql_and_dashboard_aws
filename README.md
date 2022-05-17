@@ -1,4 +1,4 @@
-## Metabase dashboard from a postgreSQL DB using AWS (RDS/EC2)
+## Metabase dashboard from a PostgreSQL DB using AWS (RDS/EC2)
 
 - Fort this project, I utilized the __Northwind Database__, a sample database shipped along with Microsoft Access (data is about 'Northwind Traders', a fictional company and its regarding sales transactions) 
 - Loaded the data into a __PostgreSQL DB__ using __AWS RDS__ and installed Metabase using __AWS EC2__; connected both to enable __data pipeline__
